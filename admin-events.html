@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Event Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <p class="admin-users-heading">
+        Admin can see users registered for each events:
+    </p>
+
+
+    <div class="event-management-container">
+
+        <h1>Event Management</h1>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>View Users</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody id="eventsTable">
+
+                <tr>
+                    <td colspan="4">
+                        Loading events...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <div
+            id="usersSection"
+            class="users-section">
+        </div>
+
+
+        <div class="admin-logout">
+
+            <!-- Logout does NOT depend on JavaScript -->
+            <a href="/login.html">
+                Log Out
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // ==========================================
+        // LOAD EVENTS FROM MYSQL
+        // ==========================================
+
+        async function loadEvents() {
+
+            const table =
+                document.getElementById("eventsTable");
+
+            try {
+
+                const token =
+                    localStorage.getItem("token");
+
+
+                console.log(
+                    "Token exists:",
+                    !!token
+                );
+
+
+                const response =
+                    await fetch("/api/events", {
+
+                        method: "GET",
+
+                        headers: {
+                            "Authorization":
+                                "Bearer " + token
+                        }
+
+                    });
+
+
+                console.log(
+                    "API status:",
+                    response.status
+                );
+
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "Events received:",
+                    data
+                );
+
+
+                if (!response.ok) {
+
+                    table.innerHTML = `
+                        <tr>
+                            <td colspan="4">
+                                ${data.message || "Unable to load events"}
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                table.innerHTML = "";
+
+
+                if (data.length === 0) {
+
+                    table.innerHTML = `
+                        <tr>
+                            <td colspan="4">
+                                No events found
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                data.forEach(function(event) {
+
+                    const row =
+                        document.createElement("tr");
+
+
+                    row.innerHTML = `
+                        <td>${event.name}</td>
+
+                        <td>${event.date}</td>
+
+                        <td>${event.location}</td>
+
+                        <td>
+                            <button
+                                onclick="viewUsers(${event.id})">
+                                View Users
+                            </button>
+                        </td>
+                    `;
+
+
+                    table.appendChild(row);
+
+                });
+
+
+            } catch (error) {
+
+                console.error(
+                    "EVENT LOAD ERROR:",
+                    error
+                );
+
+
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="4">
+                            Unable to connect to server
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+
+        // ==========================================
+        // VIEW USERS
+        // ==========================================
+
+        async function viewUsers(eventId) {
+
+            try {
+
+                const token =
+                    localStorage.getItem("token");
+
+
+                const response =
+                    await fetch(
+                        "/api/events/" +
+                        eventId +
+                        "/users",
+                        {
+                            method: "GET",
+
+                            headers: {
+                                "Authorization":
+                                    "Bearer " + token
+                            }
+                        }
+                    );
+
+
+                const users =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    alert(
+                        users.message ||
+                        "Unable to load users"
+                    );
+
+                    return;
+                }
+
+
+                const section =
+                    document.getElementById(
+                        "usersSection"
+                    );
+
+
+                section.innerHTML = `
+                    <h2>
+                        Users Registered for This Event
+                    </h2>
+                `;
+
+
+                if (users.length === 0) {
+
+                    section.innerHTML += `
+                        <p>
+                            No users registered yet.
+                        </p>
+                    `;
+
+                    return;
+                }
+
+
+                const table =
+                    document.createElement("table");
+
+
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                `;
+
+
+                const tbody =
+                    table.querySelector("tbody");
+
+
+                users.forEach(function(user) {
+
+                    const row =
+                        document.createElement("tr");
+
+
+                    row.innerHTML = `
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                    `;
+
+
+                    tbody.appendChild(row);
+
+                });
+
+
+                section.appendChild(table);
+
+
+            } catch (error) {
+
+                console.error(
+                    "USERS ERROR:",
+                    error
+                );
+
+                alert(
+                    "Unable to connect to server"
+                );
+            }
+        }
+
+
+        // ==========================================
+        // START
+        // ==========================================
+
+        loadEvents();
+
+    </script>
+
+</body>
+
+</html>

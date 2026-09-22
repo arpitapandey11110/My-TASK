@@ -1,0 +1,400 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+/* Login box */
+.login-box {
+    width: 290px;
+    padding: 36px 25px;
+
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+
+    background-color: #fafafa;
+}
+
+/* Login heading */
+.login-box h2 {
+    text-align: center;
+
+    margin: 0 0 20px;
+
+    font-size: 20px;
+    color: #222;
+}
+
+/* Input fields */
+.login-box input {
+    width: 100%;
+    height: 29px;
+
+    margin-bottom: 13px;
+
+    padding: 6px 8px;
+
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+.login-box input:focus {
+    border-color: #888;
+}
+
+/* Login button */
+.login-box button {
+    width: 100%;
+    height: 30px;
+
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+
+    background-color: #dcdcdc;
+
+    color: #333;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #cfcfcf;
+}
+
+/* Sign up text */
+.signup {
+    text-align: center;
+
+    margin-top: 13px;
+
+    font-size: 10px;
+
+    color: #444;
+}
+
+.signup a {
+    color: #333;
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+/* Registration page */
+
+.page-title {
+    position: absolute;
+    top: 8px;
+    left: 24px;
+
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.register-box {
+    width: 239px;
+
+    padding: 30px 19px;
+
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+
+    background-color: #fafafa;
+
+    position: absolute;
+
+    right: 185px;
+    top: 149px;
+}
+
+.register-box h2 {
+    text-align: center;
+
+    margin: 0 0 17px;
+
+    font-size: 16px;
+}
+
+.register-box input {
+    width: 100%;
+    height: 23px;
+
+    margin-bottom: 10px;
+
+    padding: 4px 6px;
+
+    border: 1px solid #aaa;
+    border-radius: 3px;
+
+    font-size: 9px;
+
+    box-sizing: border-box;
+}
+
+.register-box button {
+    width: 100%;
+    height: 24px;
+
+    border: 1px solid #aaa;
+    border-radius: 3px;
+
+    background-color: #ddd;
+
+    font-size: 9px;
+
+    cursor: pointer;
+}
+
+.register-box button:hover {
+    background-color: #ccc;
+}
+
+.login-text {
+    text-align: center;
+
+    margin-top: 11px;
+
+    font-size: 9px;
+
+    color: #444;
+}
+
+.login-text a {
+    color: #333;
+    text-decoration: none;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+#message {
+    text-align: center;
+    font-size: 9px;
+}
+/* User Events Page */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.user-heading {
+    margin: 10px 24px;
+    font-size: 18px;
+}
+
+.events-container {
+    width: 820px;
+    margin: 158px auto 40px;
+
+    padding: 36px 20px;
+
+    background-color: #ffffff;
+
+    border-radius: 8px;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+}
+
+.events-container h1 {
+    text-align: center;
+
+    font-size: 24px;
+
+    margin: 0 0 20px;
+
+    color: #333;
+}
+
+.events-container table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+.events-container th,
+.events-container td {
+    border: 1px solid #d3d3d3;
+
+    padding: 11px 10px;
+
+    text-align: left;
+}
+
+.events-container th {
+    background-color: #f0f0f0;
+
+    font-weight: bold;
+}
+
+.events-container td {
+    color: #555;
+}
+
+.events-container button {
+    padding: 6px 15px;
+
+    border: 1px solid #c5c5c5;
+
+    border-radius: 4px;
+
+    background-color: #ddd;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+.events-container button:hover {
+    background-color: #ccc;
+}
+
+.logout {
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+.logout a {
+    color: #555;
+    font-size: 12px;
+}
+/* Admin Registered Users Page */
+
+.admin-users-heading {
+    margin: 14px 20px;
+
+    font-size: 18px;
+}
+
+.event-management-container {
+    width: 710px;
+
+    margin: 70px auto 40px;
+
+    padding: 36px 18px 20px;
+
+    background-color: white;
+
+    border-radius: 8px;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+}
+
+.event-management-container h1 {
+    text-align: center;
+
+    margin: 0 0 18px;
+
+    font-size: 22px;
+
+    color: #333;
+}
+
+.event-management-container table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+.event-management-container th,
+.event-management-container td {
+    border: 1px solid #ccc;
+
+    padding: 10px;
+
+    text-align: left;
+}
+
+.event-management-container th {
+    background-color: #eeeeee;
+
+    font-weight: bold;
+}
+
+.event-management-container td {
+    color: #444;
+}
+
+.event-management-container button {
+    display: block;
+
+    margin: auto;
+
+    padding: 5px 15px;
+
+    background-color: #ddd;
+
+    border: 1px solid #c5c5c5;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+.event-management-container button:hover {
+    background-color: #ccc;
+}
+
+.users-section {
+    margin-top: 17px;
+}
+
+.users-section h2 {
+    margin: 0 0 10px;
+
+    font-size: 17px;
+
+    color: #333;
+}
+
+.user-item {
+    border: 1px solid #ccc;
+
+    background-color: #fafafa;
+
+    padding: 7px 9px;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+}
+
+.admin-logout {
+    text-align: center;
+
+    margin-top: 17px;
+}
+
+.admin-logout a {
+    font-size: 12px;
+
+    color: #555;
+}

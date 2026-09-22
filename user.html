@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Available Events</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <p class="user-heading">
+        user logins in and sees events:
+    </p>
+
+    <div class="events-container">
+
+        <h1>Available Events</h1>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Details</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <!-- Events will be loaded from MySQL -->
+            <tbody id="eventsTable"></tbody>
+
+        </table>
+
+        <div class="logout">
+            <button onclick="logout()">Log Out</button>
+        </div>
+
+    </div>
+
+    <script src="user.js"></script>
+
+</body>
+
+</html>
